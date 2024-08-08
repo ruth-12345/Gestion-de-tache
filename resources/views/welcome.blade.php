@@ -17,7 +17,22 @@
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
         <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
-            <h1>Bonjour Ruth, il est <?php echo date('H:i:s')?></h1>
+        @php
+        
+        $heurerécente = $heurerécente ?? date('H');
+        @endphp
+    
+        @if ($heurerécente >= 00 && $heurerécente < 12)
+
+            <h1>Bonjour Ruth, il est {{ date('H:i:s') }}</h1>
+        
+        @elseif ($heurerécente >= 12 && $heureréccente < 15)
+
+            <h1>Bon après-midi Ruth, il est {{ date('H:i:s') }}</h1>
+
+        @else
+            <h1>Bonsoir Ruth, il est {{ date('H:i:s') }}</h1>
+        @endif
 
         </div>
     </body>
