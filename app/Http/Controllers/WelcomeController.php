@@ -8,7 +8,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $heurerécente=date('H');
-        return view('welcome', ['heurerécente'=>$heurerécente]);
+        $heureccente=date('H');
+        return view('welcome', ['heureccente'=>$heureccente]);
     }
 }
