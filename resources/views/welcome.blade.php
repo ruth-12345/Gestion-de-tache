@@ -19,14 +19,14 @@
         <div class="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
         @php
         
-        $heurerécente = $heurerécente ?? date('H');
+        $heurereccente = date('H');
         @endphp
     
-        @if ($heurerécente >= 00 && $heurerécente < 12)
+        @if ($heurereccente >= 00 && $heurereccente < 12)
 
             <h1>Bonjour Ruth, il est {{ date('H:i:s') }}</h1>
         
-        @elseif ($heurerécente >= 12 && $heureréccente < 15)
+        @elseif ($heurereccente >= 12 && $heurereccente < 15)
 
             <h1>Bon après-midi Ruth, il est {{ date('H:i:s') }}</h1>
 
