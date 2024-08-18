@@ -22,7 +22,7 @@ class TaskController extends Controller
         return view('task.index', compact('tasks', 'status', 'users'));
     }
 
-    public function store(CreateTaskRequest $request):RedirectResponse
+    public function store(CreateTaskRequest $request): RedirectResponse
     {
         Task::create($request->validated());
 
@@ -34,7 +34,7 @@ class TaskController extends Controller
         //dd($request->all());
         $task->update($request->validated());
 
-        if($request->has('collaborators')) {
+        if ($request->has('collaborators')) {
             $task->users()->sync($request->collaborators);
         }
 
@@ -44,6 +44,7 @@ class TaskController extends Controller
     public function delete(Task $task): RedirectResponse
     {
         $task->delete();
+
         return redirect('/task')->with('message', 'Tâche supprimée!');
     }
 }

@@ -25,7 +25,7 @@ class CreateTaskRequest extends FormRequest
         return [
             'titre' => 'required|string|max:100',
             'priorite' => 'required|in:faible,moyen,haute',
-            'description' => 'required|string'
+            'description' => 'required|string',
         ];
     }
 }

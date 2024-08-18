@@ -28,7 +28,7 @@ class UpdateTaskRequest extends FormRequest
             'description' => 'required|string',
             'echeance' => 'nullable|date',
             'collaborators' => 'nullable|array',
-            'collaborators.*' => 'exists:users,id'
+            'collaborators.*' => 'exists:users,id',
         ];
     }
 }
