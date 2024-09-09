@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->tinyInteger('status')->default(0);
             $table->date('echeance')->nullable();
+            $table->foreignId('author')->constrained('users');
             $table->timestamps();
         });
     }

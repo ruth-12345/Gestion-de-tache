@@ -15,7 +15,18 @@ class TaskController extends Controller
     public function index(Request $request): View
     {
         $status = $request->query('status');
-        $tasks = empty($status) ? Task::all() : Task::where('status', $status)->get();
+        $author = auth()->id();
+
+        $tasks = Task::where(function ($query) use ($author, $status) {
+            $query->where('author', $author)
+                ->orWhereHas('users', function ($query) use ($author) {
+                    $query->where('user_id', $author);
+                });
+
+            if ($status) {
+                $query->where('status', $status);
+            }
+        })->get();
 
         $users = User::all(['id', 'name']);
 
@@ -24,7 +35,12 @@ class TaskController extends Controller
 
     public function store(CreateTaskRequest $request): RedirectResponse
     {
-        Task::create($request->validated());
+        Task::create([
+            'titre' => $request->titre,
+            'priorite' => $request->priorite,
+            'description' => $request->description,
+            'author' => auth()->id(),
+        ]);
 
         return redirect('/task')->with('message', 'Nouvelle tâche ajoutée!');
     }
@@ -43,6 +59,10 @@ class TaskController extends Controller
 
     public function delete(Task $task): RedirectResponse
     {
+        if ($task->author !== auth()->id()) {
+            return redirect('/task')->with('message', 'Vous ne pouvez pas supprimer cette tâche!');
+        }
+
         $task->delete();
 
         return redirect('/task')->with('message', 'Tâche supprimée!');
