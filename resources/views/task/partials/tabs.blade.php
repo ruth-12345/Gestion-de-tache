@@ -28,7 +28,7 @@
             <li class="me-2">
                 <a href="{{ route('task.index', ['status' => '2']) }}"
                    class="inline-block p-4 {{ $status == '2' ? 'text-blue-600 border-blue-600' : 'hover:text-gray-600 hover:border-gray-300' }} border-b-2 rounded-t-lg {{ $status == '2' ? 'active' : '' }} dark:text-blue-500 dark:border-blue-500"
-                   @if($status == '2') aria-current="page" @endif>
+                   @if($status == 2) aria-current="page" @endif>
                     Terminées
                 </a>
             </li>

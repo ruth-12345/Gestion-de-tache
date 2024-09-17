@@ -11,11 +11,14 @@
 
     <!-- Modal -->
     <div x-cloak x-show="editModalIsOpen" x-transition.opacity.duration.200ms x-trap.inert.noscroll="editModalIsOpen" @keydown.esc.window="editModalIsOpen = false" @click.self="editModalIsOpen = false" class="fixed inset-0 z-30 flex items-end justify-center bg-black/20 p-4 pb-8 backdrop-blur-md sm:items-center lg:p-8" role="dialog" aria-modal="true" aria-labelledby="defaultModalTitle">
-        <div x-show="editModalIsOpen" x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity" x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100" class="relative w-full max-w-7xl max-h-full flex flex-col gap-4 overflow-hidden rounded-xl border border-slate-300 bg-white text-slate-700">
+        <div x-show="editModalIsOpen"
+             x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity"
+             x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100"
+             class="relative w-full max-w-7xl h-auto max-h-screen flex flex-col gap-4 overflow-auto rounded-xl border border-slate-300 bg-white text-slate-700">
 
             <!-- Header de la modal -->
             <div class="flex items-center justify-between border-b border-slate-300 bg-slate-100/60 p-4">
-                <x-dot-vert />
+                <x-dot-vert :task="$task"/>
                 <button @click="editModalIsOpen = false" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>

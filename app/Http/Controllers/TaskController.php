@@ -17,16 +17,16 @@ class TaskController extends Controller
         $status = $request->query('status');
         $author = auth()->id();
 
-        $tasks = Task::where(function ($query) use ($author, $status) {
+        $tasks = Task::where(function ($query) use ($author) {
             $query->where('author', $author)
                 ->orWhereHas('users', function ($query) use ($author) {
                     $query->where('user_id', $author);
                 });
-
-            if ($status) {
+        })
+            ->when($status !== null, function ($query) use ($status) {
                 $query->where('status', $status);
-            }
-        })->get();
+            })
+            ->get();
 
         $users = User::all(['id', 'name']);
 
@@ -66,5 +66,13 @@ class TaskController extends Controller
         $task->delete();
 
         return redirect('/task')->with('message', 'Tâche supprimée!');
+    }
+
+
+    public function markAsDone(Task $task): RedirectResponse
+    {
+        $task->update(['status' => 2]);
+
+        return redirect('/task')->with('message', 'Tâche marquée comme terminée!');
     }
 }
