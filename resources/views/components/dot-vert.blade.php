@@ -46,7 +46,7 @@
            role="menuitem">
             Terminer
         </a>
-        <a @click.prevent="copyToClipboard" id="copyFullPath" href="{{ url()->full() }}/{{$task->id}}"
+        <a @click.prevent="copyToClipboard" id="copyFullPath" href="{{ url('/') }}/task/{{$task->id}}"
            class="bg-slate-100 px-4 py-2 text-sm text-slate-700 hover:bg-slate-800/5 hover:text-black focus-visible:bg-slate-800/10 focus-visible:text-black focus-visible:outline-none"
            role="menuitem">Copier le lien</a>
         <a onclick="event.preventDefault(); document.getElementById('delete-form-{{ $task->id }}').submit();" href="#"
