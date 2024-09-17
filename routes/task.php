@@ -9,4 +9,6 @@ Route::prefix('task')->middleware('auth')->group(function () {
 
     Route::patch('/{task}', [TaskController::class, 'update'])->name('task.update');
     Route::delete('/{task}', [TaskController::class, 'delete'])->name('task.destroy');
+
+    Route::get('/{task}/status', [TaskController::class, 'markAsDone'])->name('task.status');
 });
