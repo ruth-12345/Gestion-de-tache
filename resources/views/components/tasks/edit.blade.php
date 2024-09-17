@@ -11,7 +11,10 @@
 
     <!-- Modal -->
     <div x-cloak x-show="editModalIsOpen" x-transition.opacity.duration.200ms x-trap.inert.noscroll="editModalIsOpen" @keydown.esc.window="editModalIsOpen = false" @click.self="editModalIsOpen = false" class="fixed inset-0 z-30 flex items-end justify-center bg-black/20 p-4 pb-8 backdrop-blur-md sm:items-center lg:p-8" role="dialog" aria-modal="true" aria-labelledby="defaultModalTitle">
-        <div x-show="editModalIsOpen" x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity" x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100" class="relative w-full max-w-7xl max-h-full flex flex-col gap-4 overflow-hidden rounded-xl border border-slate-300 bg-white text-slate-700">
+        <div x-show="editModalIsOpen"
+             x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity"
+             x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100"
+             class="relative w-full max-w-7xl h-auto max-h-screen flex flex-col gap-4 overflow-auto rounded-xl border border-slate-300 bg-white text-slate-700">
 
             <!-- Header de la modal -->
             <div class="flex items-center justify-between border-b border-slate-300 bg-slate-100/60 p-4">
